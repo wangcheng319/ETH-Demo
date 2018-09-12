@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".KeyStoreImportActivity">
         </activity>
+        <activity android:name=".PrivateKeyImportActivity">
+        </activity>
     </application>
 
 </manifest>

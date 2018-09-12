@@ -69,7 +69,7 @@ public class CreateWalletActivity extends AppCompatActivity {
 
 
         String name = mEdName.getText().toString().trim();
-        pwd = mEdPasswd.getText().toString().trim();
+
 
         findViewById(R.id.btn_create).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +99,7 @@ public class CreateWalletActivity extends AppCompatActivity {
      * 生成钱包
      */
     private void gen() {
-
+        pwd = mEdPasswd.getText().toString().trim();
         try {
             File fileDir = new File(Environment.getExternalStorageDirectory().getPath() + "/LightWallet");
             if (!fileDir.exists()) {
@@ -107,19 +107,16 @@ public class CreateWalletActivity extends AppCompatActivity {
             }
 
             ECKeyPair ecKeyPair = Keys.createEcKeyPair();
-
-            //在外置卡生成
+            //keystore文件名
             String filename = WalletUtils.generateWalletFile(pwd, ecKeyPair, fileDir, false);
-
-            //keystore
-            KeyStoreUtils.genKeyStore2Files(ecKeyPair);
-            File KeyStore = new File(Environment.getExternalStorageDirectory().getPath() + "/keystore/" + KeyStoreUtils.genKeyStore2Files(ecKeyPair));
+            //获取keystore内容
+            File KeyStore = new File(Environment.getExternalStorageDirectory().getPath() + "/LightWallet/" + filename);
             Log.e("+++","keystore:"+getDatafromFile(KeyStore.getAbsolutePath()));
 
             String msg = "fileName:\n" + filename
                     + "\nprivateKey:\n" + Numeric.encodeQuantity(ecKeyPair.getPrivateKey())
                     + "\nPublicKey:\n" + Numeric.encodeQuantity(ecKeyPair.getPublicKey());
-            Log.e("+++", "chuangjian:" + msg);
+            Log.e("+++", "create:" + msg);
             //根据私钥导入,用于获取钱包地址
             importPrivateKey(Numeric.encodeQuantity(ecKeyPair.getPrivateKey()));
         } catch (Exception e) {
@@ -139,7 +136,7 @@ public class CreateWalletActivity extends AppCompatActivity {
                 + "\nprivateKey:\n" + Numeric.encodeQuantity(ecKeyPair.getPrivateKey())
                 + "\nPublicKey:\n" + Numeric.encodeQuantity(ecKeyPair.getPublicKey());
 
-        Log.e("+++", "daoru:" + msg);
+        Log.e("+++", "privateKeyImport:" + msg);
         address = credentials.getAddress();
 
     }
@@ -161,7 +158,7 @@ public class CreateWalletActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     final String result = response.body().string();
-                    Log.e("+++", "yue:" + result);
+                    Log.e("+++", "Balance:" + result);
 
                     runOnUiThread(new Runnable() {
                         @Override
@@ -191,7 +188,7 @@ public class CreateWalletActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     final String result = response.body().string();
-                    Log.e("+++", "yue:" + result);
+                    Log.e("+++", "TranRecord:" + result);
 
                     runOnUiThread(new Runnable() {
                         @Override

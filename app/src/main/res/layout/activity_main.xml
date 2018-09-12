@@ -16,10 +16,16 @@
         android:text="创建钱包"/>
 
     <Button
-        android:id="@+id/btn_import"
+        android:id="@+id/btn_import_keystore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="导入钱包"/>
+        android:text="keystore导入钱包"/>
+
+    <Button
+        android:id="@+id/btn_import_private_key"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="私钥导入钱包"/>
 
     <Button
         android:id="@+id/btn_mine"
