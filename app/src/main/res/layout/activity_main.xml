@@ -28,6 +28,12 @@
         android:text="私钥导入钱包"/>
 
     <Button
+        android:id="@+id/btn_mnemonic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="助记词"/>
+
+    <Button
         android:id="@+id/btn_mine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

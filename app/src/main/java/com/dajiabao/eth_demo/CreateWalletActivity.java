@@ -139,6 +139,8 @@ public class CreateWalletActivity extends AppCompatActivity {
         Log.e("+++", "privateKeyImport:" + msg);
         address = credentials.getAddress();
 
+        MyApplication.wallets.add(address);
+
     }
 
     /**

@@ -74,6 +74,7 @@ public class KeyStoreImportActivity extends AppCompatActivity {
             WalletFile generateWalletFile = Wallet.createLight(password, keyPair);
             Log.e("+++","keyStoreImportAddress:"+generateWalletFile.getAddress());
             mTvMsg.setText("Address:"+generateWalletFile.getAddress());
+            MyApplication.wallets.add(generateWalletFile.getAddress());
         } catch (CipherException e) {
             e.printStackTrace();
         }

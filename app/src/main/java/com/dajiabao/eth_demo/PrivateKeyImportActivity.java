@@ -48,6 +48,7 @@ public class PrivateKeyImportActivity extends AppCompatActivity {
 
         Log.e("+++", "daoru:" + msg);
         mTvMsg.setText(msg);
+        MyApplication.wallets.add(credentials.getAddress());
     }
 
 }

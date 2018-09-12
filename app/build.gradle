@@ -15,6 +15,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -30,6 +31,10 @@ android {
             universalApk true
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -42,5 +47,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation 'org.web3j:core:3.3.1-android'
-//    implementation group: 'org.ethereum', name: 'geth', version: '1.7.3'
+//    implementation 'org.bitcoinj:bitcoinj-core:0.14.7'
+
+
+    implementation 'io.github.novacrypto:BIP39:0.1.9'//用于生成助记词
 }

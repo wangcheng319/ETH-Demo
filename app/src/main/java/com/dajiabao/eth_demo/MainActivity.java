@@ -1,16 +1,9 @@
 package com.dajiabao.eth_demo;
 
 import android.content.Intent;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
-import org.web3j.crypto.MnemonicUtils;
-import org.web3j.crypto.WalletUtils;
-
-import java.security.PrivateKey;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -22,6 +15,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_import_keystore).setOnClickListener(this);
         findViewById(R.id.btn_import_private_key).setOnClickListener(this);
         findViewById(R.id.btn_mine).setOnClickListener(this);
+        findViewById(R.id.btn_mnemonic).setOnClickListener(this);
+
+
 
     }
 
@@ -37,10 +33,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_import_private_key:
                 startActivity(new Intent(this, PrivateKeyImportActivity.class));
                 break;
+            case R.id.btn_mnemonic:
+                startActivity(new Intent(this, MnemonicActivity.class));
+                break;
             case R.id.btn_mine:
-                byte[] initialEntropy = new byte[2];
-                Log.e("+++",MnemonicUtils.generateMnemonic(initialEntropy));
+                startActivity(new Intent(this, MyWalletsActivity.class));
                 break;
         }
     }
+
+
 }
