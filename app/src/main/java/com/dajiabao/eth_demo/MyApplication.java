@@ -2,6 +2,8 @@ package com.dajiabao.eth_demo;
 
 import android.app.Application;
 
+import org.web3j.protocol.Web3jService;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,4 +14,10 @@ import java.util.List;
 public class MyApplication extends Application {
 
     public static List<String> wallets = new ArrayList<>();
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Web3JService.getInstance();
+    }
 }

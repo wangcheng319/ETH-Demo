@@ -25,8 +25,8 @@ import java.math.BigInteger;
  */
 
 public class KeyStoreUtils {
-    public static final String DEFAULTKEY = "DEFAULT";
-    public static final String KEYSTORE_PATH = Environment.getExternalStorageDirectory().getPath() + "/keystore";
+    public static final String DEFAULTKEY = "123456";
+    public static final String KEYSTORE_PATH = Environment.getExternalStorageDirectory().getPath() + "/LightWallet";
 
     /**
      * 在内置存储生成keystore方便选择
@@ -58,7 +58,7 @@ public class KeyStoreUtils {
         for (File file : files) {
             String name = file.getName();
             String address = name.substring(name.lastIndexOf("--") + 2, name.lastIndexOf("."));
-            if (tagetAddress.equals(address)) {
+            if (tagetAddress.equals("0x"+address)) {
                 ObjectMapper mapper = new ObjectMapper();
 
                 try {

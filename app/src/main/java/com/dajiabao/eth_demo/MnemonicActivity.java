@@ -99,12 +99,13 @@ public class MnemonicActivity extends AppCompatActivity {
         Credentials credentials = WalletUtils.loadBip39Credentials(password,bip39Wallet.getMnemonic());
         Log.e("+++","导入助记词获取钱包地址:"+credentials.getAddress());
 
-        String msg = "助记词:\n" + bip39Wallet.getMnemonic()
+        String msg = "\n助记词:\n" + bip39Wallet.getMnemonic()
                 +"\naddress:\n" + credentials.getAddress()
                 + "\nprivateKey:\n" + Numeric.encodeQuantity(credentials.getEcKeyPair().getPrivateKey())
                 + "\nPublicKey:\n" + Numeric.encodeQuantity(credentials.getEcKeyPair().getPublicKey());
 
         mTvMsg.setText(msg);
+        Log.e("+++",msg);
 
         MyApplication.wallets.add(credentials.getAddress());
 
