@@ -1,6 +1,7 @@
 package com.dajiabao.eth_demo;
 
 import android.content.Intent;
+import android.media.session.MediaSession;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.telecom.Call;
@@ -38,6 +39,9 @@ import rx.Subscriber;
 import rx.Subscription;
 import rx.functions.Action1;
 import rx.observables.ConnectableObservable;
+
+import static org.web3j.tx.Contract.GAS_LIMIT;
+import static org.web3j.tx.ManagedTransaction.GAS_PRICE;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -192,5 +196,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        //智能合约
+        try {
+            MetaCoin_sol_MetaCoin contract = MetaCoin_sol_MetaCoin.deploy(web3j, credentials, GAS_PRICE, GAS_LIMIT).send();
+            Log.e("+++","智能合约地址:"+contract.getContractAddress());
+            Object o2 = contract.getBalance(toAddress).send();
+            Log.e("+++","智能合约余额:"+o2);
+            contract.sendCoin(toAddress,new BigInteger("10"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 }
