@@ -13,8 +13,20 @@
         android:id="@+id/btn_tran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tran"/>
+        android:text="Eth转账"/>
 
+
+    <Button
+        android:id="@+id/btn_tran1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="代币转账"/>
+
+    <Button
+        android:id="@+id/btn_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="第三方私链转账"/>
     <TextView
         android:id="@+id/tv_msg"
         android:layout_width="match_parent"
